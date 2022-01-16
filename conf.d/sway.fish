@@ -1,5 +1,7 @@
 # https://github.com/swaywm/sway/wiki#configuration
-# If running from tty1 start sway
+# If it is a login shell running from tty1 then start sway
 
-set TTY1 (tty)
-[ "$TTY1" = "/dev/tty1" ] && exec sway &> ~/.Wsession.errors
+if status is-login
+    set TTY1 (tty)
+    [ "$TTY1" = /dev/tty1 ] && exec sway &>~/.Wsession.errors
+end
